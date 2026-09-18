@@ -380,6 +380,8 @@ section{padding-block:clamp(52px,7vw,96px)}
 @media (max-width:600px){.f-row{grid-template-columns:1fr}}
 .field{display:grid;gap:7px}
 .field label{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.field label i{color:var(--coral);font-style:normal;opacity:1}
+.field-hint{font-size:.78rem;opacity:.6;line-height:1.4;margin-top:2px}
 .field input,.field select,.field textarea{
   font:inherit;font-size:.95rem;padding:13px 15px;border-radius:var(--r-m);border:1px solid rgba(255,255,255,.22);
   background:rgba(255,255,255,.08);color:inherit;width:100%;
@@ -876,7 +878,7 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding-block:
         </div>
         <div class="what-item">
           <div class="what-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7h8M8 12h5"/><rect x="3" y="3" width="18" height="15" rx="2"/><path d="M9 21l3-3 3 3"/></svg></div>
-          <div><h3>Співбесіда перед клубом</h3><p>В окремий день до старту — коротка розмова англійською на 5–10 хвилин. Ми не оцінюємо і не відмовляємо через рівень англійської — навпаки, хочемо разом зрозуміти твій рівень і підібрати клас, у якому тобі буде найкомфортніше говорити.</p></div>
+          <div><h3>Співбесіда перед клубом</h3><p>Коротка розмова англійською на 5–10 хвилин за кілька днів до старту клубу. Ми не оцінюємо і не відмовляємо через рівень англійської — навпаки, хочемо разом зрозуміти твій рівень і підібрати клас, у якому тобі буде найкомфортніше говорити. Точний день і час повідомимо після реєстрації.</p></div>
         </div>
         <div class="what-item">
           <div class="what-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15V6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H7l-4 2z"/><path d="M19 9h0a2 2 0 0 1 2 2v9l-3-2h-6"/></svg></div>
@@ -1017,17 +1019,17 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding-block:
         <div>
           <div class="eyebrow" style="color:inherit;opacity:.6">Реєстрація</div>
           <h2 style="margin-top:14px">Заповни анкету — далі коротка співбесіда англійською.</h2>
-          <p class="reg-lead">Після співбесіди ми скажемо твій клас і кабінет. Вона проходить в окремий день до старту клубу: це можливість нам і тобі побачити одне одного та познайомитися ближче, щоб у понеділок почати комфортно.</p>
+          <p class="reg-lead">Співбесіда проходить за кілька днів до старту клубу — це можливість нам і тобі побачити одне одного та познайомитися ближче, щоб у понеділок почати комфортно. Після неї скажемо твій клас і кабінет. Точний день, час і деталі надішлемо після реєстрації.</p>
           <div class="ticket">
             <div class="tk-step"><b>1</b><span>Анкета</span></div>
             <div class="tk-sep"></div>
             <div class="tk-step"><b>2</b><span>Співбесіда</span></div>
             <div class="tk-sep"></div>
-            <div class="tk-step"><b>3</b><span>Твій клас</span></div>
+            <div class="tk-step"><b>3</b><span>Клас і кабінет</span></div>
           </div>
           <div class="reg-perks">
             <div><span>→</span><span>Участь безкоштовна</span></div>
-            <div><span>→</span><span>Співбесіда — в окремий день до старту клубу</span></div>
+            <div><span>→</span><span>Клас підбираємо на співбесіді за кілька днів до клубу — тобі нічого обирати</span></div>
             <div><span>→</span><span>Відповідь від команди — протягом 2 днів</span></div>
             <div><span>→</span><span>Можна прийти з другом: вкажи це в коментарі</span></div>
           </div>
@@ -1036,33 +1038,40 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding-block:
         <form class="form" id="regform" novalidate>
           <div class="f-row">
             <div class="field">
-              <label for="f-name">Ім'я та прізвище</label>
+              <label for="f-name">Ім'я та прізвище <i>*</i></label>
               <input id="f-name" name="name" placeholder="Олена Ковальчук" autocomplete="name">
             </div>
             <div class="field">
-              <label for="f-contact">Телефон або Telegram</label>
-              <input id="f-contact" name="contact" placeholder="+380 __ ___ __ __ / @nickname">
+              <label for="f-phone">Телефон <i>*</i></label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __" autocomplete="tel">
             </div>
           </div>
           <div class="f-row">
             <div class="field">
+              <label for="f-tg">Telegram <i>*</i></label>
+              <input id="f-tg" name="telegram" placeholder="@nickname">
+            </div>
+            <div class="field">
               <label for="f-age">Вік</label>
               <input id="f-age" name="age" inputmode="numeric" placeholder="19">
             </div>
+          </div>
+          <div class="f-row">
             <div class="field">
-              <label for="f-level">Клас за рівнем</label>
-              <select id="f-level" name="level">
+              <label for="f-course">Курс <i>*</i></label>
+              <select id="f-course" name="course">
                 <option value="">Обери зі списку</option>
-                <option>A1–A2 · Beginner / Elementary</option>
-                <option>B1–B2 · Intermediate / Upper</option>
-                <option>C1 · Advanced</option>
-                <option>Не знаю — визначте за мене</option>
+                <option>1 курс</option>
+                <option>2 курс</option>
+                <option>3 курс</option>
+                <option>4 курс</option>
+                <option>5 курс</option>
+                <option>Не студент</option>
               </select>
             </div>
-          </div>
-          <div class="field">
-            <label for="f-school">З якого ти навчального закладу?</label>
-            <input id="f-school" name="school" list="schools" placeholder="ОНУ ім. Мечникова, 2 курс">
+            <div class="field">
+              <label for="f-school">З якого ти навчального закладу?</label>
+            <input id="f-school" name="school" list="schools" placeholder="ОНУ ім. Мечникова">
             <datalist id="schools">
               <option value="ОНУ ім. Мечникова"></option>
               <option value="Одеська політехніка"></option>
@@ -1072,7 +1081,13 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding-block:
               <option value="Одеська музична академія"></option>
               <option value="Коледж"></option>
               <option value="Не навчаюсь — працюю"></option>
-            </datalist>
+              </datalist>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-selflevel">Як ти оцінюєш свій рівень англійської?</label>
+            <textarea id="f-selflevel" name="selflevel" rows="2" placeholder="Читаю й розумію, але говорити майже не доводилось"></textarea>
+            <p class="field-hint">Клас обирати не треба — визначимо разом на співбесіді.</p>
           </div>
           <div class="field">
             <label id="lbl-first">Ти вже був на Англійському клубі?</label>
@@ -1083,8 +1098,26 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding-block:
             </div>
           </div>
           <div class="field">
+            <label id="lbl-source">Як ти дізнався про English Speaking Club? <i>*</i></label>
+            <div class="chips" role="group" aria-labelledby="lbl-source" id="chips-source">
+              <button type="button" class="chip" aria-pressed="false">Сторінка Campus Odesa</button>
+              <button type="button" class="chip" aria-pressed="false">Telegram</button>
+              <button type="button" class="chip" aria-pressed="false">Instagram</button>
+              <button type="button" class="chip" aria-pressed="false">Запросили друзі</button>
+              <button type="button" class="chip" aria-pressed="false">Оголошення в університеті</button>
+            </div>
+          </div>
+          <div class="field">
+            <label id="lbl-attitude">Як ти ставишся до того, що частина клубу — дискусії на християнські теми? <i>*</i></label>
+            <div class="chips" role="group" aria-labelledby="lbl-attitude" id="chips-attitude">
+              <button type="button" class="chip" aria-pressed="false">Позитивно</button>
+              <button type="button" class="chip" aria-pressed="false">Нейтрально</button>
+              <button type="button" class="chip" aria-pressed="false">Негативно</button>
+            </div>
+          </div>
+          <div class="field">
             <label for="f-note">Коментар</label>
-            <textarea id="f-note" name="note" rows="2" placeholder="Приїду з подругою, вона теж хоче в клас A1–A2"></textarea>
+            <textarea id="f-note" name="note" rows="2" placeholder="Приїду з подругою, вона теж хоче на клуб"></textarea>
           </div>
           <div class="f-err" id="f-err" role="alert"></div>
           <button class="btn btn-primary" type="submit" style="justify-content:center">Відправити анкету</button>
@@ -1361,8 +1394,8 @@ var FAQ=[
  ["Скільки це коштує?","Участь безкоштовна — витрати покривають партнери проєкту. Єдине, що бажано взяти з собою, — щось смачне до спільного столу в п'ятницю."],
  ["А якщо мій рівень зовсім низький?","Це найчастіше питання й найменша проблема. Класи A1 і A2 — найбільші на клубі. Викладач у них говорить повільно й ніхто не сміється з помилок."],
  ["Чи можна пропустити один вечір?","Можна, але шкода: теми йдуть по наростаючій, а група за тиждень стає своєю. Якщо знаєш наперед, що зможеш лише 2–3 дні, познач це в коментарі до анкети."],
- ["Це релігійний проєкт?","Ми християнська студентська спільнота Campus Odesa. Уроки англійської — це уроки англійської, а щовечора після них маємо вечірню дискусію на основі біблійних історій — теж англійською. Біблія — найбільш обговорювана книга у світі, тож це чудовий матеріал для розмови."],
- ["Що за співбесіда перед клубом?","Коротка розмова англійською в окремий день до старту. Вона потрібна, щоб визначити твій клас і познайомитись: без оцінок і без можливості «не скласти»."],
+ ["Це релігійний проєкт?","Ми християнська студентська спільнота, тож щовечора маємо дискусію на основі біблійних історій. Біблія — найбільш обговорювана книга у світі, і це чудовий матеріал, щоб говорити будь-якою мовою: її знають у кожному куточку планети. У нашому випадку — говоримо англійською."],
+ ["Що за співбесіда перед клубом?","Коротка розмова англійською на 5–10 хвилин за кілька днів до старту клубу. Вона потрібна, щоб познайомитись і підібрати твій клас: ми не оцінюємо і не відмовляємо через рівень англійської. Точний день, час і деталі надішлемо після реєстрації."],
  ["Який вік учасників?","17–24 роки. Ми студентська організація й орієнтовані саме на студентів."],
  ["Що буде після тижня клубу?","Спільнота Campus не обмежується англійськими клубами. Далі — спільні виїзні проєкти, щотижневі зустрічі навколо інтелектуальної теми та можливість дізнаватися більше про свій світогляд і розкривати духовні питання."]
 ];
@@ -1377,37 +1410,50 @@ document.getElementById("faqlist").addEventListener("click",function(e){
 });
 
 /* ---------- chips ---------- */
-document.getElementById("chips-first").addEventListener("click",function(e){
-  var c=e.target.closest(".chip"); if(!c)return;
-  [].forEach.call(this.querySelectorAll(".chip"),function(x){x.setAttribute("aria-pressed",x===c?"true":"false")});
+[].forEach.call(document.querySelectorAll(".chips"),function(group){
+  group.addEventListener("click",function(e){
+    var c=e.target.closest(".chip"); if(!c)return;
+    [].forEach.call(this.querySelectorAll(".chip"),function(x){x.setAttribute("aria-pressed",x===c?"true":"false")});
+  });
 });
+function chipValue(id){
+  var b=document.querySelector("#"+id+" .chip[aria-pressed='true']");
+  return b?b.textContent.trim():"";
+}
 
 /* ---------- form ---------- */
 /* ---------- форма → Google-таблиця ---------- */
 // 1. Створи Google-таблицю, 2. Розгорни Apps Script (файл apps-script.gs) як Web App,
 // 3. Встав сюди посилання виду https://script.google.com/macros/s/..../exec
-var SHEET_ENDPOINT = "ВСТАВ_СЮДИ_ПОСИЛАННЯ_НА_APPS_SCRIPT";
+var SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbx-6XquTHwOHjQXeGEDzRNVfn9YcuCZCP3_xJkXA0G1uNMVhsw79fb4_INK53pI2hsJ2g/exec";
 
 document.getElementById("regform").addEventListener("submit",function(e){
   e.preventDefault();
   var form=this,
       name=document.getElementById("f-name").value.trim(),
-      contact=document.getElementById("f-contact").value.trim(),
+      phone=document.getElementById("f-phone").value.trim(),
+      tg=document.getElementById("f-tg").value.trim(),
       age=document.getElementById("f-age").value.trim(),
-      level=document.getElementById("f-level").value,
+      course=document.getElementById("f-course").value,
       school=document.getElementById("f-school").value.trim(),
+      selflevel=document.getElementById("f-selflevel").value.trim(),
       note=document.getElementById("f-note").value.trim(),
-      firstBtn=document.querySelector("#chips-first .chip[aria-pressed='true']"),
-      first=firstBtn?firstBtn.textContent.trim():"",
+      first=chipValue("chips-first"),
+      source=chipValue("chips-source"),
+      attitude=chipValue("chips-attitude"),
       err=document.getElementById("f-err"),
       btn=form.querySelector("button[type=submit]");
 
   if(name.length<2){err.textContent="Вкажи, як до тебе звертатись.";document.getElementById("f-name").focus();return;}
-  if(contact.length<5){err.textContent="Потрібен телефон або Telegram — інакше ми не зможемо подзвонити.";document.getElementById("f-contact").focus();return;}
-  if(!level){err.textContent="Обери клас або варіант «Не знаю».";document.getElementById("f-level").focus();return;}
+  if(phone.length<7){err.textContent="Потрібен номер телефону.";document.getElementById("f-phone").focus();return;}
+  if(tg.length<2){err.textContent="Потрібен Telegram — так ми надішлемо деталі.";document.getElementById("f-tg").focus();return;}
+  if(!course){err.textContent="Обери курс або «Не студент».";document.getElementById("f-course").focus();return;}
+  if(!source){err.textContent="Познач, звідки ти дізнався про клуб.";document.getElementById("chips-source").scrollIntoView({block:"center"});return;}
+  if(!attitude){err.textContent="Познач, як ти ставишся до дискусій на християнські теми.";document.getElementById("chips-attitude").scrollIntoView({block:"center"});return;}
   err.textContent="";
 
-  var payload={name:name,contact:contact,age:age,level:level,school:school,first:first,note:note,
+  var payload={name:name,phone:phone,telegram:tg,age:age,course:course,school:school,
+               selflevel:selflevel,first:first,source:source,attitude:attitude,note:note,
                page:location.href,ts:new Date().toISOString()};
 
   btn.disabled=true; var label=btn.textContent; btn.textContent="Надсилаємо…";
