@@ -581,6 +581,18 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding-block:
   .season-next{font-size:.74rem;padding:4px 7px}
 }
 
+/* ============ ЗАПОБІЖНИКИ ШИРИНИ ============ */
+.hero-grid>*,.what>*,.day>*,.levels>*,.season-panel>*,.reg-grid>*,.f-row>*,.foot>*{min-width:0}
+.field input,.field select,.field textarea{max-width:100%}
+.ticket{flex-wrap:wrap;gap:6px 0}
+@media (max-width:620px){
+  .ticket{display:grid;grid-template-columns:1fr;gap:10px;padding:14px 16px}
+  .tk-step{white-space:normal;padding:0}
+  .tk-sep{display:none}
+  .tk-step:not(:last-child){border-bottom:2px dashed rgba(255,255,255,.28);padding-bottom:10px}
+  :root[data-theme="dark"] .tk-step:not(:last-child){border-bottom-color:var(--line)}
+}
+
 /* ============ LIGHTBOX ============ */
 .zoomable{cursor:zoom-in}
 .lb{
@@ -1458,13 +1470,24 @@ document.getElementById("regform").addEventListener("submit",function(e){
 
   btn.disabled=true; var label=btn.textContent; btn.textContent="Надсилаємо…";
 
-  fetch(SHEET_ENDPOINT,{method:"POST",body:JSON.stringify(payload)})
-    .then(function(r){return r.text()})
-    .then(function(){ done(name); })
-    .catch(function(){
+  // Apps Script відповідає редіректом на інший домен, тому читати відповідь не можна:
+  // шлемо у режимі no-cors (запит доходить) і показуємо подяку.
+  var body=JSON.stringify(payload);
+  var sent=false;
+  try{
+    fetch(SHEET_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:body});
+    sent=true;
+  }catch(e){}
+  if(!sent && navigator.sendBeacon){
+    try{ navigator.sendBeacon(SHEET_ENDPOINT,new Blob([body],{type:"text/plain;charset=utf-8"})); sent=true; }catch(e){}
+  }
+  setTimeout(function(){
+    if(sent){ done(name); }
+    else{
       btn.disabled=false; btn.textContent=label;
       err.textContent="Не вдалося надіслати. Напиши нам у Telegram: t.me/banditizz";
-    });
+    }
+  },600);
 
   function done(n){
     form.outerHTML='<div class="done"><div class="big">Готово, '+n.split(" ")[0].replace(/[<>&]/g,"")+'!</div>'+
