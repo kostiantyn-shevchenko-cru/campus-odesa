@@ -647,10 +647,10 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding-block:
   border-top:1px solid var(--line);transform:translateY(130%);transition:transform .28s ease;
 }
 .mcta.show{transform:none}
-.mcta-info{display:grid;line-height:1.25;min-width:0}
+.mcta-info{display:grid;line-height:1.25;min-width:0;order:2;text-align:right;margin-left:auto}
 .mcta-info b{font-family:var(--display);font-size:.92rem;white-space:nowrap}
-.mcta-info span{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.04em}
-.mcta .btn{margin-left:auto;padding:14px 22px;font-size:.95rem;white-space:nowrap}
+.mcta-info span{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
+.mcta .btn{order:1;margin-right:auto;padding:14px 22px;font-size:.95rem;white-space:nowrap;flex:none}
 
 /* ============ PHONE LAYOUT ============ */
 @media (max-width:760px){
